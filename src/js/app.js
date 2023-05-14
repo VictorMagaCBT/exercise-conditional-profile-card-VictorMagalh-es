@@ -29,20 +29,55 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
   let name = `<h1>${variables.name} ${variables.lastname}</h1>`;
+
+    // Verifica se os campos foram preenchidos
+    if (variables.name === "" || variables.lastname === "") {
+      // Exibe o alerta
+      alert("Por favor, preencha todos os campos!");
+      return false; // impede o envio do formulário
+    }
+
+    return true; // permite o envio do formulário
+  }
+  /*if (name === "" || lastname === "") {
+    alert("Please, fill all the intems!");
+    return false;
+  }
+    if (${variables.name} === "" || ${variables.lastname} === "") {
+      alert ("Please, fill all the intems!");
+      return false;
+    }
+  };*/
+  // Pega os valores dos campos do formulário
+  /*let nome = document.getElementById("nome").value;
+    if (nome === "") {
+      // shows the alert
+      alert("Please, fill all the intems!");
+      return false; // impede o envio do formulário
+    }
+    return true;
+  }   
+  let lastname = document.getElementById("lastname").value;
+
+    // Verifica se os campos foram preenchidos
+    if (lastname === "") {
+      // Exibe o alerta
+      alert("Please, fill all the intems!");
+      return false; // impede o envio do formulário
+    }
+    return true;
+  }*/
+
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-            ${name}
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
+            ${name} ${variables.lastname}
           <ul class="${variables.socialMediaPosition}">
-            <li><a href="${variables.twitter}"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="${variables.github}"><i class="fa fa-github"></i></a></li>
-            <li><a href="${variables.linkedin}"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="${variables.instagram}"><i class="fa fa-instagram"></i></a></li>
-          </ul>
-        </div>
+            <li><a href="${variables.twitter}" target="_blank"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="${variables.github}"target="_blank"><i class="fa fa-github"></i></a></li>
+            <li><a href="${variables.linkedin}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="${variables.instagram}" target="_blank"><i class="fa fa-instagram"></i></a></li>           
     `;
 }
 
@@ -54,14 +89,14 @@ window.onload = function() {
     // if includeCover is true the algorithm should
     includeCover: true,
     // this is the url of the image that will used as background for the profile cover
-    background: "https://images.unsplash.com/photo-1511974035430-5de47d3b95da",
+    background: "https://i.im.ge/2023/05/13/UbjNj4.web-g0e561fed2-640.png",
     // this is the url for the profile avatar
-    avatarURL: "https://photos.app.goo.gl/zRwNZb6WfVfCuTFC8",
+    avatarURL: "https://i.im.ge/2023/05/13/UbjjyM.photo-profile-cut.jpg",
     // social media bar position (left or right)
     socialMediaPosition: "position-left",
     // social media usernames
     twitter: "https://twitter.com/CbtVitor",
-    github: "alesanchezr",
+    github: "https://github.com/VictorMagaCBT",
     linkedin: "https://www.linkedin.com/in/magalhaes-victor-64381ba8/",
     instagram: "https://instagram.com/fisiosaudecbt",
     name: "Victor",
