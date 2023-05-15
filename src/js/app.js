@@ -28,56 +28,32 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
-  let name = `<h1>${variables.name} ${variables.lastname}</h1>`;
 
-    // Verifica se os campos foram preenchidos
-    if (variables.name === "" || variables.lastname === "") {
-      // Exibe o alerta
-      alert("Por favor, preencha todos os campos!");
-      return false; // impede o envio do formulário
-    }
+  let nameInput = document.querySelector('input[for="name"]');
 
-    return true; // permite o envio do formulário
-  }
-  /*if (name === "" || lastname === "") {
-    alert("Please, fill all the intems!");
-    return false;
-  }
-    if (${variables.name} === "" || ${variables.lastname} === "") {
-      alert ("Please, fill all the intems!");
-      return false;
-    }
-  };*/
-  // Pega os valores dos campos do formulário
-  /*let nome = document.getElementById("nome").value;
-    if (nome === "") {
-      // shows the alert
-      alert("Please, fill all the intems!");
-      return false; // impede o envio do formulário
-    }
-    return true;
-  }   
-  let lastname = document.getElementById("lastname").value;
-
-    // Verifica se os campos foram preenchidos
-    if (lastname === "") {
-      // Exibe o alerta
-      alert("Please, fill all the intems!");
-      return false; // impede o envio do formulário
-    }
-    return true;
-  }*/
+  nameInput.addEventListener("click", () => {
+    if (nameInput.value == "") alert(`Fill the name`);
+  });
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-            ${name} ${variables.lastname}
-          <ul class="${variables.socialMediaPosition}">
-            <li><a href="${variables.twitter}" target="_blank"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="${variables.github}"target="_blank"><i class="fa fa-github"></i></a></li>
-            <li><a href="${variables.linkedin}" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="${variables.instagram}" target="_blank"><i class="fa fa-instagram"></i></a></li>           
+            
+            <h1>${variables.name || ""} ${variables.lastname || ""}</h1>
+            <h2>${variables.role || ""}</h2>
+            <h3>${variables.city || ""}, ${variables.country || ""}</h3>
+            <ul class="${variables.socialMediaPosition}">
+              ${variables.twitter &&
+                `<li><a href="https://twitter.com/" target="_blanck"><i class="fa fa-twitter"></i></a></li>`}
+              ${variables.github &&
+                `<li><a href="https://github.com/" target="_blanck"><i class="fa fa-github"></i></a></li>`}
+              ${variables.linkedin &&
+                `<li><a href="https://linkedin.com/" target="_blanck"><i class="fa fa-linkedin"></i></a></li>`}
+              ${variables.instagram &&
+                `<li><a href="https://instagram.com/" target="_blanck"><i class="fa fa-instagram"></i></a></li>`}
+            </ul>
+          </div>*/
     `;
 }
 
@@ -99,8 +75,8 @@ window.onload = function() {
     github: "https://github.com/VictorMagaCBT",
     linkedin: "https://www.linkedin.com/in/magalhaes-victor-64381ba8/",
     instagram: "https://instagram.com/fisiosaudecbt",
-    name: "Victor",
-    lastname: "Magalhães",
+    name: "null",
+    lastname: "null",
     role: "Web Developer",
     country: "Portugal",
     city: "Celorico de Basto"
