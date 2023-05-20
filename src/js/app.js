@@ -29,20 +29,14 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
-  let nameInput = document.querySelector('input[for="name"]');
-
-  nameInput.addEventListener("click", () => {
-    if (nameInput.value == "") alert(`Fill the name`);
-  });
-
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
             
-            <h1>${variables.name || ""} ${variables.lastname || ""}</h1>
-            <h2>${variables.role || ""}</h2>
-            <h3>${variables.city || ""}, ${variables.country || ""}</h3>
+            <h1>${variables.name} ${variables.lastname}</h1>
+            <h2>${variables.role}</h2>
+            <h3>${variables.city}, ${variables.country}</h3>
             <ul class="${variables.socialMediaPosition}">
               ${variables.twitter &&
                 `<li><a href="https://twitter.com/" target="_blanck"><i class="fa fa-twitter"></i></a></li>`}
